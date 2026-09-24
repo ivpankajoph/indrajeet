@@ -91,7 +91,7 @@ export default function ServicesSection() {
               <h2 className="fw-bold mb-3 text-white">
                 Gardening Services
               </h2>
-              <p className="lead mb-4 text-white-50" style={{ fontSize: "1.05rem" }}>
+              <p className="lead mb-4 text-white" style={{ fontSize: "1.05rem", opacity: 0.92, lineHeight: "1.7" }}>
                 Support for plant care, garden upkeep and maintaining healthy green spaces. Our experienced gardeners assist with seasonal pruning, organic fertilization, repotting, pest prevention, and garden rejuvenation across Greater Noida and Noida.
               </p>
               <a
@@ -119,7 +119,7 @@ export default function ServicesSection() {
               <h2 className="fw-bold mb-3 text-white">
                 Landscaping Services
               </h2>
-              <p className="lead mb-4 text-white-50" style={{ fontSize: "1.05rem" }}>
+              <p className="lead mb-4 text-white" style={{ fontSize: "1.05rem", opacity: 0.92, lineHeight: "1.7" }}>
                 Plant selection and landscaping support for homes, offices and outdoor spaces. We help you design aesthetic, climate-resilient green landscapes, terrace gardens, and balcony green walls with high-vitality plants and premium planters.
               </p>
               <a

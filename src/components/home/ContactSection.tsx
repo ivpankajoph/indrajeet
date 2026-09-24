@@ -14,7 +14,16 @@ export default function ContactSection() {
         <div className="section-header text-center mb-5">
           <div className="section-tag contact-tag">Visit Aardhya Green Nursery</div>
           <h2 className="fw-bold mb-3">Visit Our Nursery</h2>
-          <p className="contact-heading mx-auto" style={{ maxWidth: "600px" }}>
+          <p
+            className="contact-heading mx-auto text-white"
+            style={{
+              maxWidth: "640px",
+              color: "#ffffff",
+              opacity: 0.95,
+              fontSize: "1.08rem",
+              lineHeight: "1.7",
+            }}
+          >
             Come explore our collection in person in Greater Noida, call us directly, or reach out on WhatsApp.
           </p>
         </div>

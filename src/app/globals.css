@@ -1120,25 +1120,22 @@ h4 {
 }
 
 .contact-tag {
-
   background: rgba(255, 255, 255, .15);
-
   color: #fff;
-
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .contact-section h2 {
-
   color: #fff;
-
 }
 
+.contact-section .section-header p,
+.contact-section .contact-heading,
 .contact-heading {
-
-  color: #f4f4f4;
-
-  opacity: .9;
-
+  color: #ffffff !important;
+  opacity: 0.95 !important;
+  font-size: 1.05rem;
+  line-height: 1.6;
 }
 
 .contact-card {
