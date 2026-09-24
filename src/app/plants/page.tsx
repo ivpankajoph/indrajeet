@@ -5,9 +5,9 @@ import PlantsSection from "@/components/home/PlantsSection";
 import FeaturesSection from "@/components/home/FeaturesSection";
 
 export const metadata: Metadata = {
-  title: "Shop All Plants | Buy Plants Online in Delhi NCR | Patel Global Green",
+  title: "All Plants, Pots & Garden Essentials | Aardhya Green Nursery Greater Noida",
   description:
-    "Browse over 500+ healthy nursery plants including indoor plants, outdoor shrubs, bonsai, flowering plants, fruit trees, and gardening essentials with next-day free delivery in Noida and Delhi NCR.",
+    "Explore healthy indoor, outdoor, flowering, fruit plants, pots, fertilizers, and potting soil from Aardhya Green Nursery in Greater Noida with home delivery in Delhi NCR.",
 };
 
 export default function PlantsPage() {
@@ -22,11 +22,10 @@ export default function PlantsPage() {
         <div className="container">
           <div className="section-tag d-inline-block">Nursery Catalog</div>
           <h1 className="fw-bold mb-2" style={{ color: "var(--primary)" }}>
-            Explore Our Entire Collection
+            Explore Our Plant &amp; Garden Collection
           </h1>
-          <p className="text-muted mx-auto" style={{ maxWidth: "600px" }}>
-            Fresh, healthy, hand-picked nursery plants delivered directly to your
-            doorstep with next-day free home delivery across Delhi NCR.
+          <p className="text-muted mx-auto" style={{ maxWidth: "640px" }}>
+            Fresh, healthy, hand-picked nursery plants, planters, and organic gardening essentials delivered to your doorstep across selected Delhi NCR areas.
           </p>
         </div>
       </section>

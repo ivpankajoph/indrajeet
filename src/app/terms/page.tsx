@@ -1,11 +1,11 @@
 import React from "react";
 import type { Metadata } from "next";
 import Breadcrumb from "@/components/common/Breadcrumb";
-import { DISPLAY_PHONE, EMAIL_ADDRESS, NURSERY_ADDRESS } from "@/lib/whatsapp";
+import { DISPLAY_PHONE, TEL_LINK, EMAIL_ADDRESS, NURSERY_ADDRESS } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions | Patel Global Green Nursery",
-  description: "Terms and conditions, delivery policy, and replacement guarantee for Patel Global Green Nursery.",
+  title: "Terms & Conditions | Aardhya Green Nursery",
+  description: "Terms and conditions, delivery policy, and replacement policy for Aardhya Green Nursery in Greater Noida.",
 };
 
 export default function TermsPage() {
@@ -28,33 +28,33 @@ export default function TermsPage() {
       <div className="container">
         <div className="bg-white p-4 p-md-5 rounded-4 shadow-sm border mx-auto" style={{ maxWidth: "860px" }}>
           <h4 className="fw-bold mb-3" style={{ color: "var(--primary)" }}>
-            1. Next-Day Free Delivery Policy
+            1. Home Delivery Policy
           </h4>
           <p className="text-muted mb-4">
-            Orders confirmed before 11:59 PM qualify for free next-day doorstep delivery across Noida, Greater Noida, Ghaziabad, Delhi, and Gurgaon. Plants are packaged in eco-friendly protective wrappers to keep foliage pristine and root balls moist.
+            Aardhya Green Nursery provides home plant delivery across selected areas in Delhi NCR, including Greater Noida, Noida, and Ghaziabad. Plants are hand-packed carefully in protective wrappers to preserve root balls and foliage.
           </p>
 
           <h4 className="fw-bold mb-3" style={{ color: "var(--primary)" }}>
-            2. Easy Replacement Guarantee
+            2. Plant Quality &amp; Replacement
           </h4>
           <p className="text-muted mb-4">
-            If a plant arrives damaged in transit, with broken stems, or shows signs of transit shock that cannot be revived, we provide an immediate replacement — no questions asked. Simply send a photo of the damaged plant to our WhatsApp support within 24 hours of delivery.
+            If a plant arrives damaged in transit or shows severe signs of shock that cannot be revived, we provide replacement assistance. Please share a photo of the affected plant on WhatsApp within 24 hours of receipt.
           </p>
 
           <h4 className="fw-bold mb-3" style={{ color: "var(--primary)" }}>
             3. Pricing &amp; Payments
           </h4>
           <p className="text-muted mb-4">
-            All prices shown are inclusive of applicable taxes. Payment may be completed via Paytm UPI, PhonePe UPI, or Cash on Delivery (COD) upon inspection at your doorstep.
+            All prices are transparent nursery-direct rates. Payment can be made via UPI (Paytm, PhonePe, GPay) or Cash on Delivery upon inspection of your order.
           </p>
 
           <h4 className="fw-bold mb-3" style={{ color: "var(--primary)" }}>
             4. Nursery Location &amp; Contact
           </h4>
           <p className="text-muted mb-0">
-            Patel Global Green Nursery<br />
+            <strong>Aardhya Green Nursery</strong><br />
             {NURSERY_ADDRESS}<br />
-            Phone: {DISPLAY_PHONE}<br />
+            Phone: <a href={TEL_LINK} className="text-success">{DISPLAY_PHONE}</a><br />
             Email: {EMAIL_ADDRESS}
           </p>
         </div>

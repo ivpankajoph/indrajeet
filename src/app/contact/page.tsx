@@ -2,7 +2,14 @@
 
 import React, { useState } from "react";
 import Breadcrumb from "@/components/common/Breadcrumb";
-import { DISPLAY_PHONE, EMAIL_ADDRESS, NURSERY_ADDRESS, getWhatsAppGeneralUrl } from "@/lib/whatsapp";
+import {
+  DISPLAY_PHONE,
+  TEL_LINK,
+  NURSERY_ADDRESS,
+  WHATSAPP_PHONE,
+  MAPS_DIRECTIONS_URL,
+  getWhatsAppGeneralUrl,
+} from "@/lib/whatsapp";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -15,8 +22,8 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const whatsappMsg = `Hi Patel Global Green! 🌿\n\n*Inquiry from Website:*\nName: ${formData.name}\nPhone: ${formData.phone}\nInterested in: ${formData.plantInterest || "General Inquiry"}\nMessage: ${formData.message}`;
-    const url = `https://wa.me/917292009034?text=${encodeURIComponent(whatsappMsg)}`;
+    const whatsappMsg = `Hi Aardhya Green Nursery! 🌿\n\n*Inquiry from Website:*\nName: ${formData.name}\nPhone: ${formData.phone}\nInterested in: ${formData.plantInterest || "General Inquiry"}\nMessage: ${formData.message}`;
+    const url = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(whatsappMsg)}`;
     window.open(url, "_blank", "noopener,noreferrer");
     setSubmitted(true);
   };
@@ -30,13 +37,12 @@ export default function ContactPage() {
         style={{ background: "linear-gradient(135deg, #e8f5e9, #f9fdf9)" }}
       >
         <div className="container">
-          <div className="section-tag contact-tag d-inline-block">Reach Out</div>
+          <div className="section-tag contact-tag d-inline-block">Visit Aardhya Green Nursery</div>
           <h1 className="display-5 fw-bold mb-3" style={{ color: "var(--primary)" }}>
-            We&apos;re Here to Help You Grow 🌿
+            Visit Our Nursery in Greater Noida
           </h1>
-          <p className="lead text-muted mx-auto" style={{ maxWidth: "600px" }}>
-            Have a question about plant care, bulk orders, or custom garden setups?
-            Reach out through our direct channels below.
+          <p className="lead text-muted mx-auto" style={{ maxWidth: "660px" }}>
+            Reach out for plant inquiries, pots, fertilizers, gardening services, or to verify home delivery in your area across Delhi NCR.
           </p>
         </div>
       </section>
@@ -51,59 +57,75 @@ export default function ContactPage() {
               </h3>
 
               <div className="d-flex flex-column gap-3 mb-4">
-                <div className="contact-card">
-                  <div className="contact-icon">
+                <div className="contact-card p-4 rounded-4 bg-white shadow-sm border">
+                  <div className="contact-icon text-success mb-2 fs-4">
                     <i className="fas fa-location-dot"></i>
                   </div>
                   <div className="contact-content">
-                    <span className="label">Nursery Address</span>
-                    <p className="val">{NURSERY_ADDRESS}</p>
+                    <span className="label text-muted small fw-bold text-uppercase d-block mb-1">
+                      Nursery Address
+                    </span>
+                    <p className="val fw-semibold mb-2" style={{ fontSize: "0.95rem" }}>
+                      {NURSERY_ADDRESS}
+                    </p>
+                    <a
+                      href={MAPS_DIRECTIONS_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-sm btn-outline-success rounded-pill px-3"
+                    >
+                      <i className="fas fa-map-location-dot me-1"></i> Get Directions
+                    </a>
                   </div>
                 </div>
 
-                <div className="contact-card">
-                  <div className="contact-icon">
+                <div className="contact-card p-4 rounded-4 bg-white shadow-sm border">
+                  <div className="contact-icon text-success mb-2 fs-4">
                     <i className="fas fa-phone"></i>
                   </div>
                   <div className="contact-content">
-                    <span className="label">Call Directly</span>
+                    <span className="label text-muted small fw-bold text-uppercase d-block mb-1">
+                      Call Directly
+                    </span>
                     <a
-                      href={`tel:${DISPLAY_PHONE.replace(/\s+/g, "")}`}
-                      className="val text-decoration-none"
+                      href={TEL_LINK}
+                      className="val text-decoration-none fw-bold fs-5 text-success d-block mb-2"
                     >
                       {DISPLAY_PHONE}
                     </a>
-                  </div>
-                </div>
-
-                <div className="contact-card">
-                  <div className="contact-icon">
-                    <i className="fas fa-envelope"></i>
-                  </div>
-                  <div className="contact-content">
-                    <span className="label">Email Address</span>
                     <a
-                      href={`mailto:${EMAIL_ADDRESS}`}
-                      className="val contact-email text-decoration-none"
+                      href={TEL_LINK}
+                      className="btn btn-sm btn-success rounded-pill px-3 text-white"
                     >
-                      {EMAIL_ADDRESS}
+                      <i className="fas fa-phone me-1"></i> Call Now
                     </a>
                   </div>
                 </div>
 
-                <div className="contact-card">
-                  <div className="contact-icon">
+                <div className="contact-card p-4 rounded-4 bg-white shadow-sm border">
+                  <div className="contact-icon text-success mb-2 fs-4">
                     <i className="fab fa-whatsapp"></i>
                   </div>
                   <div className="contact-content">
-                    <span className="label">WhatsApp Support</span>
+                    <span className="label text-muted small fw-bold text-uppercase d-block mb-1">
+                      WhatsApp Us
+                    </span>
                     <a
                       href={getWhatsAppGeneralUrl()}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="val text-decoration-none"
+                      className="val text-decoration-none fw-bold fs-5 text-success d-block mb-2"
                     >
-                      {DISPLAY_PHONE} (Instant reply)
+                      {DISPLAY_PHONE}
+                    </a>
+                    <a
+                      href={getWhatsAppGeneralUrl()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-sm rounded-pill px-3 text-white"
+                      style={{ background: "#25d366" }}
+                    >
+                      <i className="fab fa-whatsapp me-1"></i> WhatsApp Us
                     </a>
                   </div>
                 </div>
@@ -113,11 +135,10 @@ export default function ContactPage() {
                 className="p-4 rounded-4 text-center"
                 style={{ background: "#e8f5e9", border: "1px dashed var(--primary)" }}
               >
-                <i className="fas fa-clock fs-3 text-success mb-2"></i>
-                <h6 className="fw-bold mb-1">Open 7 Days a Week</h6>
+                <i className="fas fa-truck-fast fs-3 text-success mb-2"></i>
+                <h6 className="fw-bold mb-1">Home Delivery in Delhi NCR</h6>
                 <p className="small text-muted mb-0">
-                  Monday – Sunday: 8:00 AM to 8:00 PM<br />
-                  Next-day deliveries dispatch daily at 7:00 AM
+                  Serving Greater Noida, Noida, Ghaziabad and nearby NCR areas. Contact us on WhatsApp for pin code delivery check.
                 </p>
               </div>
             </div>
@@ -129,15 +150,15 @@ export default function ContactPage() {
                   Send an Inquiry
                 </h3>
                 <p className="text-muted mb-4">
-                  Fill in your requirements and connect instantly with our plant specialists.
+                  Fill in your requirements and connect instantly with Aardhya Green Nursery.
                 </p>
 
                 {submitted ? (
                   <div className="alert alert-success p-4 rounded-3 text-center" role="alert">
                     <div className="display-5 mb-2">🌿</div>
-                    <h5 className="alert-heading fw-bold">Inquiry Sent via WhatsApp!</h5>
+                    <h5 className="alert-heading fw-bold">Inquiry Prepared for WhatsApp!</h5>
                     <p className="mb-3">
-                      Thank you for contacting Patel Global Green. If WhatsApp didn&apos;t open automatically, please click below:
+                      Thank you for contacting Aardhya Green Nursery. If WhatsApp didn&apos;t open automatically, please click below:
                     </p>
                     <a
                       href={getWhatsAppGeneralUrl()}
@@ -179,7 +200,7 @@ export default function ContactPage() {
                     </div>
 
                     <div className="mb-3">
-                      <label className="form-label fw-semibold">Plant Category or Need</label>
+                      <label className="form-label fw-semibold">Category or Requirement</label>
                       <select
                         className="form-select form-select-lg fs-6"
                         value={formData.plantInterest}
@@ -187,24 +208,27 @@ export default function ContactPage() {
                           setFormData({ ...formData, plantInterest: e.target.value })
                         }
                       >
-                        <option value="">Select an interest (Optional)</option>
+                        <option value="">Select a category (Optional)</option>
                         <option value="Indoor Plants">Indoor Plants</option>
                         <option value="Outdoor Plants">Outdoor Plants</option>
                         <option value="Flowering Plants">Flowering Plants</option>
-                        <option value="Bonsai Collection">Bonsai Collection</option>
                         <option value="Fruit Plants">Fruit Plants</option>
-                        <option value="Balcony Gardening Setup">Balcony Gardening Setup</option>
-                        <option value="Bulk Corporate Gifting">Bulk Corporate Gifting</option>
+                        <option value="Pots & Planters">Pots &amp; Planters</option>
+                        <option value="Fertilizers & Manure">Fertilizers &amp; Manure</option>
+                        <option value="Soil & Potting Mix">Soil &amp; Potting Mix</option>
+                        <option value="Gardening Services">Gardening Services</option>
+                        <option value="Landscaping Services">Landscaping Services</option>
+                        <option value="Bulk Plant Supply">Bulk Plant Supply</option>
                       </select>
                     </div>
 
                     <div className="mb-4">
-                      <label className="form-label fw-semibold">Your Message / Specific Plant Query</label>
+                      <label className="form-label fw-semibold">Your Message / Plant Query</label>
                       <textarea
                         rows={4}
                         required
                         className="form-control form-control-lg fs-6"
-                        placeholder="Tell us what you're looking for or your garden requirements..."
+                        placeholder="Tell us what you're looking for or your plant requirements..."
                         value={formData.message}
                         onChange={(e) =>
                           setFormData({ ...formData, message: e.target.value })
@@ -214,7 +238,8 @@ export default function ContactPage() {
 
                     <button
                       type="submit"
-                      className="contact-btn w-100 border-0 text-white fw-bold py-3 fs-6 d-flex align-items-center justify-content-center"
+                      className="contact-btn w-100 border-0 text-white fw-bold py-3 fs-6 d-flex align-items-center justify-content-center rounded-pill"
+                      style={{ background: "#25d366" }}
                     >
                       <i className="fab fa-whatsapp me-2 fs-5"></i>
                       Send Inquiry on WhatsApp

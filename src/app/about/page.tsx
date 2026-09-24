@@ -4,12 +4,18 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import Breadcrumb from "@/components/common/Breadcrumb";
 import FeaturesSection from "@/components/home/FeaturesSection";
-import { DISPLAY_PHONE, EMAIL_ADDRESS, NURSERY_ADDRESS, getWhatsAppGeneralUrl } from "@/lib/whatsapp";
+import {
+  DISPLAY_PHONE,
+  TEL_LINK,
+  NURSERY_ADDRESS,
+  MAPS_DIRECTIONS_URL,
+  getWhatsAppGeneralUrl,
+} from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
-  title: "About Us | Patel Global Green Nursery Noida",
+  title: "About Us | Aardhya Green Nursery Greater Noida",
   description:
-    "Discover the story of Patel Global Green Nursery, Delhi NCR's trusted green destination providing nursery-direct healthy plants, organic soil, and next-day free delivery.",
+    "Aardhya Green Nursery is a local plant nursery in Greater Noida offering indoor, outdoor, flowering, fruit plants, pots, fertilizers, and soil with home delivery across selected Delhi NCR areas.",
 };
 
 export default function AboutPage() {
@@ -23,30 +29,28 @@ export default function AboutPage() {
         style={{ background: "linear-gradient(135deg, #e8f5e9, #f9fdf9)" }}
       >
         <div className="container">
-          <div className="section-tag d-inline-block">Our Story</div>
+          <div className="section-tag d-inline-block">About Us</div>
           <h1 className="display-5 fw-bold mb-3" style={{ color: "var(--primary)" }}>
-            Growing Happiness, One Plant at a Time
+            About Aardhya Green Nursery
           </h1>
-          <p className="lead text-muted mx-auto" style={{ maxWidth: "720px" }}>
-            Welcome to <strong>Patel Global Green Nursery</strong>, where our passion for
-            nature transforms homes, offices, balconies, and gardens across Delhi NCR into
-            vibrant green sanctuaries.
+          <p className="lead text-muted mx-auto" style={{ maxWidth: "760px" }}>
+            Aardhya Green Nursery is a local plant nursery in Greater Noida offering a wide range of indoor, outdoor, flowering and fruit plants for homes, offices, gardens and landscaping requirements.
           </p>
         </div>
       </section>
 
-      {/* Mission & Story */}
+      {/* Story & Description */}
       <section className="py-5">
         <div className="container">
           <div className="row align-items-center g-5">
             <div className="col-lg-6">
               <div
-                className="position-relative overflow-hidden rounded-4 shadow-lg"
+                className="position-relative overflow-hidden rounded-4 shadow-sm"
                 style={{ height: "420px" }}
               >
                 <Image
                   src="/images/nursery.avif"
-                  alt="Patel Global Green Nursery Grounds"
+                  alt="Aardhya Green Nursery Grounds in Greater Noida"
                   fill
                   priority
                   style={{ objectFit: "cover" }}
@@ -56,36 +60,29 @@ export default function AboutPage() {
 
             <div className="col-lg-6">
               <span className="badge bg-success-subtle text-success px-3 py-2 rounded-pill mb-3">
-                Rooted in Excellence
+                Your Local Green Destination
               </span>
               <h2 className="fw-bold mb-3" style={{ color: "var(--primary)" }}>
-                From Our Garden Straight to Your Doorstep
+                Healthy Plants for Homes, Offices &amp; Gardens
               </h2>
-              <p className="text-muted mb-3" style={{ lineHeight: "1.7" }}>
-                Based conveniently at Atul Marg, Amrapali Leisure Valley in Noida,
-                Patel Global Green is dedicated to making plant parenthood effortless,
-                accessible, and joyful. We nurture over 500+ plant varieties ranging from
-                air-purifying indoor pothos and peace lilies to exotic bonsai, fragrant
-                jasmines, fruit plants, and organic potting mixes.
+              <p className="text-muted mb-3" style={{ lineHeight: "1.8" }}>
+                Aardhya Green Nursery is a local plant nursery in Greater Noida offering a wide range of indoor, outdoor, flowering and fruit plants for homes, offices, gardens and landscaping requirements. We also provide pots, fertilizers, manure, soil and other gardening essentials.
               </p>
-              <p className="text-muted mb-4" style={{ lineHeight: "1.7" }}>
-                By delivering straight from our extensive nursery grounds, we eliminate
-                middlemen to provide the freshest, healthiest greenery at the most honest
-                nursery-direct rates. Every order placed by midnight qualifies for next-day
-                free delivery across Noida, Greater Noida, Ghaziabad, Delhi, and Gurgaon.
+              <p className="text-muted mb-4" style={{ lineHeight: "1.8" }}>
+                Our team helps customers choose suitable plants based on their space and requirements. We serve customers in Greater Noida and provide home delivery across selected areas of Delhi NCR, including Noida and Ghaziabad.
               </p>
 
               <div className="d-flex flex-wrap gap-3">
                 <Link href="/plants" className="btn-primary-green text-decoration-none">
-                  <i className="fas fa-leaf me-2"></i> Explore Our Plants
+                  <i className="fas fa-leaf me-2"></i> Browse Our Plants
                 </Link>
                 <a
-                  href={getWhatsAppGeneralUrl("Hi Patel Global Green! I'd like to know more about your nursery.")}
+                  href={getWhatsAppGeneralUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-outline-green text-decoration-none"
                 >
-                  <i className="fab fa-whatsapp me-2"></i> Chat with Us
+                  <i className="fab fa-whatsapp me-2"></i> WhatsApp Us
                 </a>
               </div>
             </div>
@@ -93,8 +90,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Pillars */}
-      <div className="mt-4">
+      {/* Why Choose Us */}
+      <div className="mt-2">
         <FeaturesSection />
       </div>
 
@@ -102,35 +99,45 @@ export default function AboutPage() {
       <section className="py-5 my-4">
         <div className="container">
           <div
-            className="p-5 rounded-4 text-white text-center shadow-lg position-relative overflow-hidden"
+            className="p-5 rounded-4 text-white text-center shadow-sm position-relative overflow-hidden"
             style={{
               background: "linear-gradient(135deg, #1b5e20, #2e7d32)",
             }}
           >
-            <h2 className="fw-bold mb-3">Visit Our Nursery in Noida</h2>
-            <p className="lead mx-auto mb-4" style={{ maxWidth: "680px", opacity: 0.9 }}>
-              Experience the tranquility of thousands of blooming plants in person. Walk
-              through our greenhouses and pick your favorites with guidance from our
-              botanical experts.
+            <h2 className="fw-bold mb-3">Visit Our Nursery in Greater Noida</h2>
+            <p className="lead mx-auto mb-4" style={{ maxWidth: "680px", opacity: 0.95 }}>
+              Visit our physical nursery in Greater Noida to select fresh plants in person or receive hands-on guidance from our staff for your balcony, lawn, or indoor decor.
             </p>
             <div className="d-flex flex-wrap justify-content-center gap-4 text-start mb-4">
               <div className="d-flex align-items-center gap-2">
                 <i className="fas fa-location-dot fs-4 text-warning"></i>
-                <span>{NURSERY_ADDRESS}</span>
+                <span className="small">{NURSERY_ADDRESS}</span>
               </div>
               <div className="d-flex align-items-center gap-2">
                 <i className="fas fa-phone fs-4 text-warning"></i>
-                <span>{DISPLAY_PHONE}</span>
+                <a href={TEL_LINK} className="text-white text-decoration-none fw-bold">
+                  {DISPLAY_PHONE}
+                </a>
               </div>
             </div>
-            <a
-              href={`https://wa.me/917292009034?text=${encodeURIComponent("Hi! I'd like directions to visit Patel Global Green Nursery.")}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-warning text-dark px-4 py-3 rounded-pill fw-bold"
-            >
-              <i className="fab fa-whatsapp me-2"></i> Get Directions on WhatsApp
-            </a>
+            <div className="d-flex flex-wrap justify-content-center gap-3">
+              <a
+                href={MAPS_DIRECTIONS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-warning text-dark px-4 py-3 rounded-pill fw-bold shadow-sm"
+              >
+                <i className="fas fa-map-location-dot me-2"></i> Get Directions
+              </a>
+              <a
+                href={getWhatsAppGeneralUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-outline-light px-4 py-3 rounded-pill fw-bold"
+              >
+                <i className="fab fa-whatsapp me-2"></i> WhatsApp Us
+              </a>
+            </div>
           </div>
         </div>
       </section>

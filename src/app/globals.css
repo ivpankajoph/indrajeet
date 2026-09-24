@@ -66,8 +66,7 @@ h4 {
 .brand-logo {
   width: 42px;
   height: 42px;
-  background: linear-gradient(135deg var(--primary-light),
-      var(--primary));
+  background: linear-gradient(135deg, var(--primary-light), var(--primary));
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -844,16 +843,21 @@ h4 {
 }
 
 .btn-add {
-  background: #2e7d32;
+  background: #25d366;
   color: white;
   border: none;
-  border-radius: 10px;
-  padding: 10px 18px;
+  border-radius: 20px;
+  padding: 8px 14px;
   font-weight: 600;
+  font-size: 0.82rem;
+  transition: all 0.25s ease;
 }
 
 .btn-add:hover {
-  background: #1b5e20;
+  background: #128c7e;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
 }
 
 /* ── FEATURES ── */

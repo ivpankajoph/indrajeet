@@ -2,8 +2,11 @@
 
 import React, { useState } from "react";
 import HeroSection from "@/components/home/HeroSection";
+import AboutSection from "@/components/home/AboutSection";
 import CategoriesSection from "@/components/home/CategoriesSection";
 import PlantsSection from "@/components/home/PlantsSection";
+import ServicesSection from "@/components/home/ServicesSection";
+import DeliverySection from "@/components/home/DeliverySection";
 import FeaturesSection from "@/components/home/FeaturesSection";
 import PaymentSection from "@/components/home/PaymentSection";
 import SocialSection from "@/components/home/SocialSection";
@@ -23,11 +26,14 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
+      <AboutSection />
       <CategoriesSection onCategorySelect={handleCategorySelect} />
       <PlantsSection
         activeCategory={selectedCategory}
         onCategoryChange={(cat) => setSelectedCategory(cat)}
       />
+      <ServicesSection />
+      <DeliverySection />
       <FeaturesSection />
       <PaymentSection />
       <SocialSection />

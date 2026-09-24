@@ -27,14 +27,14 @@ export default function CategoriesSection({
       <div className="container">
         <div className="section-header">
           <div className="section-tag">Browse by Category</div>
-          <h2>Find Your Perfect Plant</h2>
+          <h2>Find What You Need for Your Green Space</h2>
           <p>
-            Explore our carefully curated collection across all plant types — from
-            lush indoor greens to vibrant outdoor blooms.
+            Explore our curated selection of plants, pots, fertilizers, and
+            growing mixes at Aardhya Green Nursery.
           </p>
         </div>
 
-        <div className="row g-4 justify-content-evenly">
+        <div className="row g-4 justify-content-center">
           {categories.map((cat) => (
             <div
               key={cat.id}
@@ -51,7 +51,10 @@ export default function CategoriesSection({
                   }
                 }}
               >
-                <div className="position-relative w-100 overflow-hidden rounded-3 mb-2" style={{ height: "140px" }}>
+                <div
+                  className="position-relative w-100 overflow-hidden rounded-3 mb-3"
+                  style={{ height: "140px" }}
+                >
                   <Image
                     src={cat.image}
                     alt={cat.alt}
@@ -61,8 +64,8 @@ export default function CategoriesSection({
                     style={{ objectFit: "cover" }}
                   />
                 </div>
-                <h5>{cat.name}</h5>
-                <p>{cat.description}</p>
+                <h5 className="fw-bold mb-1">{cat.name}</h5>
+                <p className="small text-muted mb-2">{cat.description}</p>
                 <span className="cat-count">{cat.count}</span>
               </div>
             </div>

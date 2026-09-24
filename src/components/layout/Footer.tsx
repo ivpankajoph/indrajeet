@@ -1,54 +1,45 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { DISPLAY_PHONE, EMAIL_ADDRESS, NURSERY_ADDRESS, getWhatsAppGeneralUrl } from "@/lib/whatsapp";
+import {
+  DISPLAY_PHONE,
+  TEL_LINK,
+  EMAIL_ADDRESS,
+  NURSERY_ADDRESS,
+  getWhatsAppGeneralUrl,
+} from "@/lib/whatsapp";
 
 export default function Footer() {
   return (
     <footer className="footer-section">
       <div className="container">
         <div className="row gy-5">
-          {/* Company */}
+          {/* Brand Info */}
           <div className="col-lg-4">
-            <Link href="/" className="navbar-brand text-decoration-none d-inline-flex mb-3">
+            <Link
+              href="/"
+              className="navbar-brand text-decoration-none d-inline-flex align-items-center mb-3"
+            >
               <div className="brand-logo me-2">
                 <Image
                   src="/images/logo.jpeg"
-                  alt="patel global green nursery logo"
-                  width={55}
-                  height={55}
+                  alt="Aardhya Green Nursery logo"
+                  width={50}
+                  height={50}
                   style={{ objectFit: "cover", borderRadius: "50%" }}
                 />
               </div>
-              Patel Global Green
+              <span className="fw-bold fs-5 text-white">Aardhya Green Nursery</span>
             </Link>
 
             <div>
               <p className="footer-about">
-                Delhi NCR&apos;s trusted online nursery providing healthy plants,
-                premium pots, gardening essentials and fast home delivery.
+                Healthy plants, gardening essentials and plant care services in
+                Greater Noida, with home delivery across selected Delhi NCR areas.
               </p>
             </div>
 
             <div className="social-links mt-3">
-              <a
-                href="https://www.instagram.com/patel_globalgreen?utm_source=qr&igsh=czVha3FycHBkcnV3"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-              >
-                <i className="fab fa-instagram"></i>
-              </a>
-
-              <a
-                href="https://youtube.com/@patel_globalgreen?si=dfnGYIZ4Oc5q6mry"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="YouTube"
-              >
-                <i className="fab fa-youtube"></i>
-              </a>
-
               <a
                 href={getWhatsAppGeneralUrl()}
                 target="_blank"
@@ -57,57 +48,71 @@ export default function Footer() {
               >
                 <i className="fab fa-whatsapp"></i>
               </a>
+              <a
+                href={TEL_LINK}
+                aria-label="Call"
+              >
+                <i className="fas fa-phone"></i>
+              </a>
             </div>
           </div>
 
-          {/* Categories */}
+          {/* Core Links */}
           <div className="col-6 col-lg-2">
-            <h5>Categories</h5>
+            <h5>Nursery Links</h5>
             <ul className="footer-links list-unstyled">
-              <li><Link href="/categories/indoor">Indoor Plants</Link></li>
-              <li><Link href="/categories/outdoor">Outdoor Plants</Link></li>
-              <li><Link href="/categories/flowering">Flowering Plants</Link></li>
-              <li><Link href="/categories/succulents">Succulents</Link></li>
-              <li><Link href="/categories/bonsai">Bonsai</Link></li>
-              <li><Link href="/categories/herbs">Herbs</Link></li>
+              <li><Link href="/">Home</Link></li>
+              <li><Link href="/about">About Us</Link></li>
+              <li><Link href="/#plants">Plants</Link></li>
+              <li><Link href="/#services">Services</Link></li>
+              <li><Link href="/#gardening">Gardening</Link></li>
+              <li><Link href="/#landscaping">Landscaping</Link></li>
             </ul>
           </div>
 
-          {/* Quick Links */}
+          {/* Policy & Help Links (All 11 links per Requirement 14) */}
           <div className="col-6 col-lg-2">
-            <h5>Quick Links</h5>
+            <h5>Policies &amp; Info</h5>
             <ul className="footer-links list-unstyled">
-              <li><Link href="/#home">Home</Link></li>
-              <li><Link href="/plants">Shop</Link></li>
-              <li><Link href="/#features">Why Choose Us</Link></li>
-              <li><Link href="/contact">Contact</Link></li>
-              <li><Link href="/#payment">Payments</Link></li>
+              <li><Link href="/contact">Contact Us</Link></li>
+              <li><Link href="/privacy">Privacy Policy</Link></li>
+              <li><Link href="/terms">Terms &amp; Conditions</Link></li>
+              <li><Link href="/shipping">Shipping &amp; Delivery</Link></li>
+              <li><Link href="/refund">Return/Refund Policy</Link></li>
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Contact Details */}
           <div className="col-lg-4">
-            <h5>Contact Us</h5>
+            <h5>Visit &amp; Contact</h5>
             <ul className="footer-contact list-unstyled">
               <li>
                 <i className="fas fa-location-dot"></i>
-                {NURSERY_ADDRESS}
+                <span>{NURSERY_ADDRESS}</span>
               </li>
               <li>
                 <i className="fas fa-phone"></i>
-                <a href={`tel:${DISPLAY_PHONE.replace(/\s+/g, "")}`}>
+                <a href={TEL_LINK}>
                   {DISPLAY_PHONE}
                 </a>
               </li>
               <li>
-                <i className="fas fa-envelope"></i>
-                <a href={`mailto:${EMAIL_ADDRESS}`}>
-                  {EMAIL_ADDRESS}
+                <i className="fab fa-whatsapp"></i>
+                <a
+                  href={getWhatsAppGeneralUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  WhatsApp: {DISPLAY_PHONE}
                 </a>
               </li>
               <li>
+                <i className="fas fa-envelope"></i>
+                <a href={`mailto:${EMAIL_ADDRESS}`}>{EMAIL_ADDRESS}</a>
+              </li>
+              <li>
                 <i className="fas fa-truck-fast"></i>
-                Free Delivery Across Delhi NCR
+                <span>Home Delivery Across Selected Delhi NCR Areas</span>
               </li>
             </ul>
           </div>
@@ -116,8 +121,8 @@ export default function Footer() {
         <hr className="footer-divider" />
 
         <div className="footer-bottom">
-          <p>© 2025 Patel Global Green Nursery. All Rights Reserved.</p>
-          <p>Made with ❤️ for Plant Lovers</p>
+          <p>© {new Date().getFullYear()} Aardhya Green Nursery. All Rights Reserved.</p>
+          <p>Greater Noida • Delhi NCR</p>
         </div>
       </div>
     </footer>

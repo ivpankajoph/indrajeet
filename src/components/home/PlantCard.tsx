@@ -14,7 +14,7 @@ interface PlantCardProps {
 export default function PlantCard({ plant, onQuickView }: PlantCardProps) {
   const handleOrder = (e: React.MouseEvent) => {
     e.stopPropagation();
-    const url = getWhatsAppOrderUrl(plant.orderQuery);
+    const url = getWhatsAppOrderUrl(plant.name);
     window.open(url, "_blank", "noopener,noreferrer");
   };
 
@@ -33,9 +33,16 @@ export default function PlantCard({ plant, onQuickView }: PlantCardProps) {
       >
         <div
           className="plant-img-wrap position-relative"
-          style={plant.bgStyle ? { background: plant.bgStyle.replace("background:", "").trim() } : undefined}
+          style={
+            plant.bgStyle
+              ? { background: plant.bgStyle.replace("background:", "").trim() }
+              : undefined
+          }
         >
-          <div className="position-relative w-100 h-100" style={{ minHeight: "220px" }}>
+          <div
+            className="position-relative w-100 h-100"
+            style={{ minHeight: "220px" }}
+          >
             <Image
               src={plant.image}
               alt={plant.alt || plant.name}
@@ -75,14 +82,15 @@ export default function PlantCard({ plant, onQuickView }: PlantCardProps) {
           )}
         </div>
 
-        <div className="plant-footer mt-auto">
+        <div className="plant-footer mt-auto d-flex align-items-center justify-content-between gap-2">
           <span className="price">₹ {plant.price}</span>
           <button
-            className="btn-add border-0"
+            className="btn-add border-0 d-inline-flex align-items-center"
             onClick={handleOrder}
             title="Order directly via WhatsApp"
+            style={{ whiteSpace: "nowrap", fontSize: "0.85rem" }}
           >
-            Order Now
+            <i className="fab fa-whatsapp me-1"></i> Order on WhatsApp
           </button>
         </div>
       </div>

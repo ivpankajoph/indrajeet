@@ -15,7 +15,7 @@ export default function PlantModal({ plant, onClose }: PlantModalProps) {
   if (!plant) return null;
 
   const handleOrder = () => {
-    const url = getWhatsAppOrderUrl(plant.orderQuery);
+    const url = getWhatsAppOrderUrl(plant.name);
     window.open(url, "_blank", "noopener,noreferrer");
   };
 
@@ -98,7 +98,7 @@ export default function PlantModal({ plant, onClose }: PlantModalProps) {
           )}
 
           <p className="text-muted mb-4" style={{ lineHeight: "1.6", fontSize: "0.95rem" }}>
-            {plant.description || "Nursery-grown, hand-picked fresh plant with vigorous roots and lush foliage. Packed securely for 100% damage-free delivery across Delhi NCR."}
+            {plant.description || "Nursery-grown, hand-picked fresh plant with healthy roots and lush foliage from Aardhya Green Nursery in Greater Noida. Packed carefully for doorstep delivery across selected Delhi NCR areas."}
           </p>
 
           <div className="d-flex gap-3">

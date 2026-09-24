@@ -1,11 +1,11 @@
 import React from "react";
 import type { Metadata } from "next";
 import Breadcrumb from "@/components/common/Breadcrumb";
-import { DISPLAY_PHONE, EMAIL_ADDRESS, NURSERY_ADDRESS } from "@/lib/whatsapp";
+import { DISPLAY_PHONE, TEL_LINK, EMAIL_ADDRESS, NURSERY_ADDRESS } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Patel Global Green Nursery",
-  description: "Privacy policy and customer data handling at Patel Global Green Nursery.",
+  title: "Privacy Policy | Aardhya Green Nursery",
+  description: "Privacy policy and customer data handling at Aardhya Green Nursery Greater Noida.",
 };
 
 export default function PrivacyPage() {
@@ -38,7 +38,7 @@ export default function PrivacyPage() {
             2. Use of Information
           </h4>
           <p className="text-muted mb-4">
-            Your contact details are strictly used to coordinate dispatch schedules, send tracking updates, and share plant care recommendations. We never sell, rent, or trade customer information to third parties.
+            Your contact details are strictly used to coordinate dispatch schedules, send delivery updates, and share plant care recommendations. We never sell, rent, or trade customer information to third parties.
           </p>
 
           <h4 className="fw-bold mb-3" style={{ color: "var(--primary)" }}>
@@ -53,9 +53,9 @@ export default function PrivacyPage() {
           </h4>
           <p className="text-muted mb-0">
             For questions about data protection or your orders:<br />
-            Patel Global Green Nursery<br />
+            <strong>Aardhya Green Nursery</strong><br />
             {NURSERY_ADDRESS}<br />
-            Email: {EMAIL_ADDRESS} | Phone: {DISPLAY_PHONE}
+            Email: {EMAIL_ADDRESS} | Phone: <a href={TEL_LINK} className="text-success">{DISPLAY_PHONE}</a>
           </p>
         </div>
       </div>

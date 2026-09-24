@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import FloatingWhatsApp from "@/components/common/FloatingWhatsApp";
+import { EMAIL_ADDRESS } from "@/lib/whatsapp";
 
 export const viewport: Viewport = {
   themeColor: "#2e7d32",
@@ -10,37 +12,43 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://patelglobalgreen.com"),
-  title: "Patel Global Green | Buy Plants Online in Delhi NCR | Indoor & Outdoor Plants In Noida",
+  metadataBase: new URL("https://aardhyagreennursery.com"),
+  title: "Aardhya Green Nursery | Plants, Pots & Gardening Services in Greater Noida",
   description:
-    "Patel Global Green Nursery offers indoor plants, outdoor plants, flowering plants, bonsai, herbs and gardening accessories with home delivery.",
+    "Aardhya Green Nursery in Greater Noida offers indoor, outdoor, flowering and fruit plants, pots, fertilizers, soil, gardening, landscaping and home plant delivery across selected Delhi NCR areas.",
   keywords: [
-    "indoor plants",
-    "outdoor plants",
-    "nursery",
-    "bonsai",
+    "Aardhya Green Nursery",
+    "plant nursery in Greater Noida",
+    "plants in Greater Noida",
+    "plants in Noida",
+    "indoor plants Delhi NCR",
+    "outdoor plants Greater Noida",
     "flowering plants",
-    "herbs",
-    "climbers",
-    "gardening",
-    "buy plants online delhi ncr",
-    "plants in noida",
+    "fruit plants",
+    "pots and planters",
+    "fertilizers and manure",
+    "soil and potting mix",
+    "gardening services Greater Noida",
+    "landscaping services Noida",
+    "home plant delivery Delhi NCR",
+    "Ghaziabad plant delivery",
   ],
-  authors: [{ name: "Patel Global Green" }],
+  authors: [{ name: "Aardhya Green Nursery" }],
   icons: {
     icon: "/images/logo.jpeg",
   },
   openGraph: {
-    title: "Patel Global Green Nursery",
-    description: "Buy Indoor & Outdoor Plants Online",
-    url: "https://patelglobalgreen.com",
-    siteName: "Patel Global Green",
+    title: "Aardhya Green Nursery | Plants, Pots & Gardening Services in Greater Noida",
+    description:
+      "Aardhya Green Nursery in Greater Noida offers indoor, outdoor, flowering and fruit plants, pots, fertilizers, soil, gardening, landscaping and home plant delivery across selected Delhi NCR areas.",
+    url: "https://aardhyagreennursery.com",
+    siteName: "Aardhya Green Nursery",
     images: [
       {
-        url: "/images/logo.avif",
+        url: "/images/logo.jpeg",
         width: 800,
         height: 600,
-        alt: "Patel Global Green Nursery",
+        alt: "Aardhya Green Nursery",
       },
     ],
     locale: "en_IN",
@@ -56,19 +64,27 @@ export default function RootLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "GardenStore",
-    name: "Patel Global Green Nursery",
-    description: "Indoor and Outdoor Plants Nursery in Noida & Delhi NCR",
-    url: "https://patelglobalgreen.com",
-    telephone: "+917292009034",
-    email: "patelglobalgreen9034@gmail.com",
+    name: "Aardhya Green Nursery",
+    description:
+      "Aardhya Green Nursery in Greater Noida offers indoor, outdoor, flowering and fruit plants, pots, fertilizers, soil, gardening, landscaping and home plant delivery across selected Delhi NCR areas.",
+    url: "https://aardhyagreennursery.com",
+    telephone: "+918076754604",
+    email: EMAIL_ADDRESS,
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Atul Marg, Near Ace Spuire ke Samne, Amrapali Leisure Valley",
+      streetAddress:
+        "Atul Marg, Near Ace Spuire ke Samne, Amrapali Leisure Valley",
       addressLocality: "Noida, Greater Noida",
       addressRegion: "Uttar Pradesh",
       postalCode: "201301",
       addressCountry: "IN",
     },
+    areaServed: [
+      "Greater Noida",
+      "Noida",
+      "Delhi NCR",
+      "Ghaziabad",
+    ],
   };
 
   return (
@@ -95,6 +111,7 @@ export default function RootLayout({
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <FloatingWhatsApp />
       </body>
     </html>
   );

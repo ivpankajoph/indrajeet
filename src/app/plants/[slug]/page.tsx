@@ -1,10 +1,9 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { plants, Plant } from "@/data/plants";
-import { getWhatsAppOrderUrl, DISPLAY_PHONE } from "@/lib/whatsapp";
+import { plants } from "@/data/plants";
+import { getWhatsAppOrderUrl, TEL_LINK } from "@/lib/whatsapp";
 import Breadcrumb from "@/components/common/Breadcrumb";
 import PlantCard from "@/components/home/PlantCard";
 
@@ -23,14 +22,14 @@ export async function generateMetadata({
 }: PlantPageProps): Promise<Metadata> {
   const { slug } = await params;
   const plant = plants.find((p) => p.slug === slug);
-  if (!plant) return { title: "Plant Not Found | Patel Global Green" };
+  if (!plant) return { title: "Plant Not Found | Aardhya Green Nursery" };
 
   return {
-    title: `${plant.name} - ₹${plant.price} | Buy Online | Patel Global Green`,
-    description: `Order ${plant.name} (${plant.scientificName}) online with free next-day home delivery across Delhi NCR. Nursery-direct pricing and 100% health guarantee.`,
+    title: `${plant.name} - ₹${plant.price} | Aardhya Green Nursery Greater Noida`,
+    description: `Order ${plant.name} (${plant.scientificName}) from Aardhya Green Nursery in Greater Noida. Home delivery available across selected Delhi NCR areas.`,
     openGraph: {
-      title: `${plant.name} | Patel Global Green Nursery`,
-      description: `₹${plant.price} - ${plant.benefits.join(", ")}. Free next day delivery in Delhi NCR.`,
+      title: `${plant.name} | Aardhya Green Nursery`,
+      description: `₹${plant.price} - ${plant.benefits.join(", ")}. Home delivery in selected Delhi NCR areas.`,
       images: [{ url: plant.image }],
     },
   };
@@ -48,7 +47,7 @@ export default async function PlantDetailPage({ params }: PlantPageProps) {
     .filter((p) => p.category === plant.category && p.id !== plant.id)
     .slice(0, 4);
 
-  const whatsappUrl = getWhatsAppOrderUrl(plant.orderQuery);
+  const whatsappUrl = getWhatsAppOrderUrl(plant.name);
 
   return (
     <div className="plant-detail-page pb-5">
@@ -124,12 +123,6 @@ export default async function PlantDetailPage({ params }: PlantPageProps) {
                 <span className="display-6 fw-bold" style={{ color: "var(--primary)" }}>
                   ₹ {plant.price}
                 </span>
-                <span className="text-muted text-decoration-line-through">
-                  ₹ {Math.round(plant.price * 1.35)}
-                </span>
-                <span className="badge bg-danger rounded-pill px-2 py-1" style={{ fontSize: "0.8rem" }}>
-                  Save 25%
-                </span>
               </div>
 
               {/* Benefits */}
@@ -161,10 +154,10 @@ export default async function PlantDetailPage({ params }: PlantPageProps) {
                 <i className="fas fa-truck-fast fs-3 text-success"></i>
                 <div>
                   <div className="fw-bold" style={{ color: "var(--primary)" }}>
-                    Next-Day Free Delivery in Delhi NCR
+                    Home Delivery in Selected Delhi NCR Areas
                   </div>
                   <small className="text-muted">
-                    Order before midnight to receive fresh healthy plants tomorrow!
+                    We deliver healthy nursery plants to Greater Noida, Noida &amp; nearby areas. Contact us on WhatsApp for pin-code availability.
                   </small>
                 </div>
               </div>
@@ -179,26 +172,26 @@ export default async function PlantDetailPage({ params }: PlantPageProps) {
                   style={{ background: "#25d366", fontSize: "1.05rem" }}
                 >
                   <i className="fab fa-whatsapp me-2 fs-5"></i>
-                  Order Now on WhatsApp
+                  Order on WhatsApp
                 </a>
 
                 <a
-                  href={`tel:${DISPLAY_PHONE.replace(/\s+/g, "")}`}
+                  href={TEL_LINK}
                   className="btn btn-outline-success py-3 px-4 rounded-pill fw-semibold d-flex align-items-center"
                 >
                   <i className="fas fa-phone me-2"></i>
-                  Call Us
+                  Call Now
                 </a>
               </div>
             </div>
           </div>
 
-          {/* Plant Care & Guarantee Tabs / Accordion */}
+          {/* Plant Care & Nursery Guarantee Tabs / Accordion */}
           <div className="row mt-5 pt-4">
             <div className="col-12">
               <div className="p-4 rounded-4 bg-white shadow-sm border">
                 <h4 className="fw-bold mb-4" style={{ color: "var(--primary)" }}>
-                  Plant Care &amp; Nursery Guarantee
+                  Plant Care &amp; Aardhya Nursery Assurance
                 </h4>
                 <div className="row g-4">
                   <div className="col-md-4">
@@ -209,7 +202,7 @@ export default async function PlantDetailPage({ params }: PlantPageProps) {
                       <div>
                         <h6 className="fw-bold mb-1">Light Requirements</h6>
                         <p className="small text-muted mb-0">
-                          Thrives best in bright, indirect sunlight or moderate indoor illumination.
+                          Thrives best in appropriate sunlight or moderate indoor illumination suited to the variety.
                         </p>
                       </div>
                     </div>
@@ -222,7 +215,7 @@ export default async function PlantDetailPage({ params }: PlantPageProps) {
                       <div>
                         <h6 className="fw-bold mb-1">Watering Routine</h6>
                         <p className="small text-muted mb-0">
-                          Water moderately when top 1-2 inches of soil feels dry to the touch. Avoid waterlogging.
+                          Water moderately when the top 1-2 inches of soil feels dry. Avoid waterlogging.
                         </p>
                       </div>
                     </div>
@@ -233,9 +226,9 @@ export default async function PlantDetailPage({ params }: PlantPageProps) {
                         <i className="fas fa-shield-halved"></i>
                       </div>
                       <div>
-                        <h6 className="fw-bold mb-1">Damage-Free Guarantee</h6>
+                        <h6 className="fw-bold mb-1">Nursery Fresh Guarantee</h6>
                         <p className="small text-muted mb-0">
-                          If your plant arrives damaged or unhealthy, we replace it instantly — no questions asked.
+                          Hand-selected directly from our nursery grounds in Greater Noida with healthy roots and foliage.
                         </p>
                       </div>
                     </div>
