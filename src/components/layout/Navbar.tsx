@@ -40,12 +40,12 @@ export default function Navbar() {
         <Link href="/" className="navbar-brand text-decoration-none d-flex align-items-center gap-2">
           <div className="brand-logo position-relative">
             <Image
-              src="/images/logo.jpeg"
+              src="/images/logo.png"
               alt="Aardhya Green Nursery logo"
-              width={50}
-              height={50}
+              width={52}
+              height={52}
               priority
-              style={{ objectFit: "cover", borderRadius: "50%" }}
+              style={{ objectFit: "contain", borderRadius: "50%" }}
             />
           </div>
           <span className="fw-bold" style={{ color: "var(--primary)", fontSize: "1.2rem" }}>

@@ -35,7 +35,8 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Aardhya Green Nursery" }],
   icons: {
-    icon: "/images/logo.jpeg",
+    icon: "/images/logo.png",
+    apple: "/images/logo.png",
   },
   openGraph: {
     title: "Aardhya Green Nursery | Plants, Pots & Gardening Services in Greater Noida",
@@ -45,10 +46,10 @@ export const metadata: Metadata = {
     siteName: "Aardhya Green Nursery",
     images: [
       {
-        url: "/images/logo.jpeg",
-        width: 800,
-        height: 600,
-        alt: "Aardhya Green Nursery",
+        url: "/images/logo.png",
+        width: 1024,
+        height: 1024,
+        alt: "Aardhya Green Nursery Logo",
       },
     ],
     locale: "en_IN",

@@ -20,13 +20,13 @@ export default function Footer() {
               href="/"
               className="navbar-brand text-decoration-none d-inline-flex align-items-center mb-3"
             >
-              <div className="brand-logo me-2">
+              <div className="brand-logo me-2 rounded-circle overflow-hidden bg-white p-1 shadow-sm d-flex align-items-center justify-content-center">
                 <Image
-                  src="/images/logo.jpeg"
+                  src="/images/logo.png"
                   alt="Aardhya Green Nursery logo"
                   width={50}
                   height={50}
-                  style={{ objectFit: "cover", borderRadius: "50%" }}
+                  style={{ objectFit: "contain", borderRadius: "50%" }}
                 />
               </div>
               <span className="fw-bold fs-5 text-white">Aardhya Green Nursery</span>
