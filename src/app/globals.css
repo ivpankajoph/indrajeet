@@ -912,8 +912,7 @@ h4 {
   background: #f8fbf8;
 }
 
-.row.g-3>div,
-.row.g-4>div {
+.payment-section .row>div {
   display: flex;
 }
 
