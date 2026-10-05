@@ -8,7 +8,6 @@ import PlantsSection from "@/components/home/PlantsSection";
 import ServicesSection from "@/components/home/ServicesSection";
 import DeliverySection from "@/components/home/DeliverySection";
 import FeaturesSection from "@/components/home/FeaturesSection";
-import PaymentSection from "@/components/home/PaymentSection";
 import SocialSection from "@/components/home/SocialSection";
 import ContactSection from "@/components/home/ContactSection";
 
@@ -35,7 +34,6 @@ export default function HomePage() {
       <ServicesSection />
       <DeliverySection />
       <FeaturesSection />
-      <PaymentSection />
       <SocialSection />
       <ContactSection />
     </>

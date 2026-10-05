@@ -1,52 +1,126 @@
 import React from "react";
 import Image from "next/image";
-import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { plants } from "@/data/plants";
+import { Plant } from "@/data/plants";
+import { getPlantsCollection, isMongoConfigured } from "@/lib/mongodb";
+import { ObjectId } from "mongodb";
 import { getWhatsAppOrderUrl, TEL_LINK } from "@/lib/whatsapp";
 import Breadcrumb from "@/components/common/Breadcrumb";
 import PlantCard from "@/components/home/PlantCard";
+import Link from "next/link";
+
+export const dynamic = "force-dynamic";
 
 interface PlantPageProps {
   params: Promise<{ slug: string }>;
 }
 
-export async function generateStaticParams() {
-  return plants.map((p) => ({
-    slug: p.slug,
-  }));
+async function getPlantFromDb(slug: string): Promise<Plant | null> {
+  if (!isMongoConfigured()) return null;
+  try {
+    const collection = await getPlantsCollection();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const orConditions: any[] = [{ slug }];
+    if (ObjectId.isValid(slug)) {
+      orConditions.push({ _id: new ObjectId(slug) });
+    }
+    const raw = await collection.findOne({ $or: orConditions });
+    if (!raw) return null;
+    return {
+      slug: raw.slug,
+      category: raw.category,
+      categoryName: raw.categoryName,
+      name: raw.name,
+      scientificName: raw.scientificName,
+      price: raw.price,
+      image: raw.image,
+      alt: raw.alt || raw.name,
+      bgStyle: raw.bgStyle,
+      tag: raw.tag,
+      badge: raw.badge,
+      benefits: raw.benefits || [],
+      orderQuery: raw.orderQuery,
+      description: raw.description,
+      _id: raw._id.toString(),
+      id: raw.id || raw._id.toString(),
+    };
+  } catch (err) {
+    console.error("Error retrieving plant from MongoDB:", err);
+    return null;
+  }
+}
+
+async function getRelatedPlants(category: string, currentSlug: string): Promise<Plant[]> {
+  if (!isMongoConfigured()) return [];
+  try {
+    const collection = await getPlantsCollection();
+    const rawList = await collection
+      .find({ category, slug: { $ne: currentSlug } })
+      .limit(4)
+      .toArray();
+    return rawList.map((raw) => ({
+      slug: raw.slug,
+      category: raw.category,
+      categoryName: raw.categoryName,
+      name: raw.name,
+      scientificName: raw.scientificName,
+      price: raw.price,
+      image: raw.image,
+      alt: raw.alt || raw.name,
+      bgStyle: raw.bgStyle,
+      tag: raw.tag,
+      badge: raw.badge,
+      benefits: raw.benefits || [],
+      orderQuery: raw.orderQuery,
+      description: raw.description,
+      _id: raw._id.toString(),
+      id: raw.id || raw._id.toString(),
+    }));
+  } catch {
+    return [];
+  }
 }
 
 export async function generateMetadata({
   params,
 }: PlantPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const plant = plants.find((p) => p.slug === slug);
+  const plant = await getPlantFromDb(slug);
   if (!plant) return { title: "Plant Not Found | Aardhya Green Nursery" };
 
   return {
     title: `${plant.name} - ₹${plant.price} | Aardhya Green Nursery Greater Noida`,
-    description: `Order ${plant.name} (${plant.scientificName}) from Aardhya Green Nursery in Greater Noida. Home delivery available across selected Delhi NCR areas.`,
+    description: `Order ${plant.name} from Aardhya Green Nursery in Greater Noida. Home delivery available across selected Delhi NCR areas.`,
     openGraph: {
       title: `${plant.name} | Aardhya Green Nursery`,
-      description: `₹${plant.price} - ${plant.benefits.join(", ")}. Home delivery in selected Delhi NCR areas.`,
-      images: [{ url: plant.image }],
+      description: `₹${plant.price} - ${plant.benefits?.join(", ") || ""}. Home delivery in selected Delhi NCR areas.`,
+      images: plant.image ? [{ url: plant.image }] : [],
     },
   };
 }
 
 export default async function PlantDetailPage({ params }: PlantPageProps) {
   const { slug } = await params;
-  const plant = plants.find((p) => p.slug === slug);
+  const plant = await getPlantFromDb(slug);
 
   if (!plant) {
-    notFound();
+    return (
+      <div className="container py-5 text-center my-5">
+        <div className="display-4 text-muted mb-3">🌱</div>
+        <h2 className="fw-bold mb-3" style={{ color: "var(--primary)" }}>Product Not Found</h2>
+        <p className="text-muted mx-auto mb-4" style={{ maxWidth: "480px" }}>
+          This product might have been removed, or the database is not configured.
+        </p>
+        <div className="d-flex justify-content-center gap-3">
+          <Link href="/plants" className="btn btn-success rounded-pill px-4">
+            Browse All Plants
+          </Link>
+        </div>
+      </div>
+    );
   }
 
-  const relatedPlants = plants
-    .filter((p) => p.category === plant.category && p.id !== plant.id)
-    .slice(0, 4);
-
+  const relatedPlants = await getRelatedPlants(plant.category, plant.slug);
   const whatsappUrl = getWhatsAppOrderUrl(plant.name);
 
   return (
@@ -74,8 +148,8 @@ export default async function PlantDetailPage({ params }: PlantPageProps) {
                 }}
               >
                 <Image
-                  src={plant.image}
-                  alt={plant.alt}
+                  src={plant.image || "/images/logo.png"}
+                  alt={plant.alt || plant.name}
                   fill
                   priority
                   sizes="(max-width: 992px) 100vw, 50vw"
@@ -143,7 +217,8 @@ export default async function PlantDetailPage({ params }: PlantPageProps) {
               )}
 
               <p className="text-muted my-3" style={{ lineHeight: "1.7" }}>
-                {plant.description}
+                {plant.description ||
+                  `Nursery-grown, hand-picked ${plant.name} from Aardhya Green Nursery in Greater Noida. Carefully packed and delivered fresh.`}
               </p>
 
               {/* Delivery Guarantee Strip */}
@@ -186,7 +261,7 @@ export default async function PlantDetailPage({ params }: PlantPageProps) {
             </div>
           </div>
 
-          {/* Plant Care & Nursery Guarantee Tabs / Accordion */}
+          {/* Plant Care & Nursery Guarantee */}
           <div className="row mt-5 pt-4">
             <div className="col-12">
               <div className="p-4 rounded-4 bg-white shadow-sm border">
@@ -244,12 +319,15 @@ export default async function PlantDetailPage({ params }: PlantPageProps) {
               <div className="section-header mb-4 text-start">
                 <div className="section-tag">More Choices</div>
                 <h3 className="fw-bold" style={{ color: "var(--primary)" }}>
-                  Similar Plants You May Like
+                  Similar Items You May Like
                 </h3>
               </div>
               <div className="row g-4">
                 {relatedPlants.map((relPlant) => (
-                  <PlantCard key={relPlant.id} plant={relPlant} />
+                  <PlantCard
+                    key={relPlant._id || relPlant.id || relPlant.slug}
+                    plant={relPlant}
+                  />
                 ))}
               </div>
             </div>

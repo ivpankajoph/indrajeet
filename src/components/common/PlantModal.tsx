@@ -46,7 +46,7 @@ export default function PlantModal({ plant, onClose }: PlantModalProps) {
         <div className="position-relative w-100" style={{ height: "280px" }}>
           <Image
             src={plant.image}
-            alt={plant.alt}
+            alt={plant.alt || plant.name}
             fill
             style={{ objectFit: "cover" }}
           />
